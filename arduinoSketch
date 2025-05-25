@@ -1,0 +1,55 @@
+const int PIN_FORWARD  = 2;
+const int PIN_BACKWARD = 3;
+const int PIN_LEFT     = 4;
+const int PIN_RIGHT    = 5;
+
+void setup() {
+  pinMode(PIN_FORWARD, OUTPUT);
+  pinMode(PIN_BACKWARD, OUTPUT);
+  pinMode(PIN_LEFT, OUTPUT);
+  pinMode(PIN_RIGHT, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available()) {
+    char c = Serial.read();
+
+    digitalWrite(PIN_FORWARD, LOW);
+    digitalWrite(PIN_BACKWARD, LOW);
+    digitalWrite(PIN_LEFT, LOW);
+    digitalWrite(PIN_RIGHT, LOW);
+
+    if (c == 'x') {$
+
+    }
+    if (c == 'f') {
+      digitalWrite(PIN_FORWARD, HIGH);
+    }
+    if (c == 'b') {
+      digitalWrite(PIN_BACKWARD, HIGH);
+    }
+    if (c == 'l') {
+      digitalWrite(PIN_LEFT, HIGH);
+    }
+    if (c == 'r') {
+      digitalWrite(PIN_RIGHT, HIGH);
+    }
+    if (c == 'a') { // 'a' = fr
+      digitalWrite(PIN_FORWARD, HIGH);
+      digitalWrite(PIN_RIGHT, HIGH);
+    }
+    if (c == 'z') { // 'z' = fl
+      digitalWrite(PIN_FORWARD, HIGH);
+      digitalWrite(PIN_LEFT, HIGH);
+    }
+    if (c == 'y') { // 'y' = br
+      digitalWrite(PIN_BACKWARD, HIGH);
+      digitalWrite(PIN_RIGHT, HIGH);
+    }
+    if (c == 'w') { // 'w' = bl
+      digitalWrite(PIN_BACKWARD, HIGH);
+      digitalWrite(PIN_LEFT, HIGH);
+    }
+  }
+}
